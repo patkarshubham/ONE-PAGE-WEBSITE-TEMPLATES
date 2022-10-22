@@ -1,0 +1,179 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - GoSNippets</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>body {
+    background: #f8f9ff;
+    font-weight: 300;
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.box {
+    background-color: #6152f4;
+    color: white;
+    padding: 50px 100px 0 60px;
+    border-radius: 15px;
+}
+
+.box p {
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    word-spacing: 0.15em;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.container .checkmark {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 2px white solid;
+    border-radius: 50%;
+}
+
+.container#disabled {
+    cursor: not-allowed;
+    height: 45px;
+}
+
+.container#disabled .label,
+.container#disabled .checkmark {
+    opacity: 0.4;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input:not(.disabled)~.checkmark {
+    background-color: white;
+}
+
+/* When the radio button is checked, add a white background */
+.container input:checked~.checkmark {
+    background-color: white;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 8px;
+    left: 8px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #6152f4;
+}
+
+.tooltiptext {
+    visibility: visible;
+    width: 240px;
+    background-color: white;
+    color: black;
+    font-size: 0.9em;
+    text-align: left;
+    border-radius: 5px;
+    padding: 25px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    box-shadow: 0px 4px 12px 0px rgba(97, 82, 244, 0.1);
+}
+
+.tooltiptext::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px;
+    border-color: white transparent transparent white;
+    transform: rotate(45deg);
+    top: -12px;
+    left: 40px;
+    border-radius: 6px 0px 0px 0px;
+}
+
+.tooltiptext a {
+    color: #6152f4;
+    text-decoration: none;
+}</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div class="box">
+
+    <p>Choose your deployment</p>
+
+    <label class="container">Cloud
+        <input type="radio" name="radio">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container">Data Center
+        <input type="radio" checked="checked" name="radio">
+        <span class="checkmark"></span>
+    </label>
+
+    <label class="container" id="disabled">
+        <span class="label">Server</span>
+        <input class="disabled" type="radio" name="radio" disabled>
+        <span class="checkmark"></span>
+        <span class="tooltiptext">
+            Server is no longer available for this product. <a>Learn why</a>
+        </span>
+    </label>
+
+</div>
+                            <script type='text/javascript'>let label = document.getElementById("disabled");
+
+label.addEventListener("mouseover", function () {
+document.querySelector(".tooltiptext").style.visibility = "visible";
+});
+
+label.addEventListener("mouseleave", function () {
+document.querySelector(".tooltiptext").style.visibility = "hidden";
+});</script>
+                            </body>
+                        </html>

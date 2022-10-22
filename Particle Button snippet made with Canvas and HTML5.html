@@ -1,0 +1,112 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - GoSNippets</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>   body {
+       background-color: transparent;
+       background-image: linear-gradient(100deg, #f26798 0%, #3023ae 100%);
+       text-align: center;
+       padding-top: 10%;
+   }
+
+   [class*="BT"] {
+       width: 250px;
+       display: block;
+       position: absolute;
+       padding: 0;
+       border-color: #0e0e0e;
+       margin: 0 0 10px;
+       line-height: 6px;
+       border-style: solid;
+       left: 50%;
+       margin-left: -125px;
+       height: 60px;
+   }
+
+   [class*="BT"] hover {
+       position: absolute;
+       z-index: 5;
+       width: 246px;
+       margin-left: -370px;
+       transition: all 0.3s ease-out 0s;
+       background: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(135, 135, 135, 0.38) 50%, rgba(255, 255, 255, 0) 100%);
+       /* FF3.6+ */
+       background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(135, 135, 135, 0.38)), color-stop(100%, rgba(255, 255, 255, 0)));
+       /* Chrome,Safari4+ */
+       background: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(135, 135, 135, 0.38) 50%, rgba(255, 255, 255, 0) 100%);
+       /* Chrome10+,Safari5.1+ */
+       background: -o-linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(135, 135, 135, 0.38) 50%, rgba(255, 255, 255, 0) 100%);
+       /* Opera 11.10+ */
+       background: -ms-linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(135, 135, 135, 0.38) 50%, rgba(255, 255, 255, 0) 100%);
+       /* IE10+ */
+       background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(135, 135, 135, 0.38) 50%, rgba(255, 255, 255, 0) 100%);
+       /* W3C */
+       filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#00ffffff', GradientType=1);
+       /* IE6-9 fallback on horizontal gradient */
+       height: 60px;
+       margin-top: -30px;
+   }
+
+   [class*="OH"] {
+       overflow: hidden;
+   }
+
+   [class*="BR"] {
+       border-width: 2px;
+   }
+
+   [class*="R6"] {
+       border-radius: 6px;
+   }
+
+   [class*="NF"] {
+       background: transparent;
+   }
+
+   [class*="BT"]:hover hover {
+       margin-left: 123px;
+   }
+
+   [class*="TU"] {
+       text-transform: uppercase;
+   }
+
+   [class*="PT"] {
+       cursor: pointer;
+   }
+
+   [class*="BT"] span {
+       position: absolute;
+       width: 200px;
+       margin-left: -100px;
+       z-index: 3;
+   }
+
+   canvas {
+       margin: 0;
+       padding: 0;
+       display: block;
+       position: absolute;
+       margin-top: -30px;
+   }</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <h3 class="TU">Particle Button & Glow effect</h3>
+<br /><br />
+<p>
+    <button id="button" class="BT-OH-BR-R6-NF-FH-FP-TU-PT">
+        <canvas id="canvas"></canvas>
+        <hover></hover>
+        <span>Hover for Awesomeness</span>
+    </button>
+</p>
+                            <script type='text/javascript'>(function() { var lastTime = 0; var vendors = ['ms', 'moz', 'webkit', 'o']; for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) { window.requestAnimationFrame=window[vendors[x] + 'RequestAnimationFrame' ]; window.cancelAnimationFrame=window[vendors[x] + 'CancelAnimationFrame' ] || window[vendors[x] + 'CancelRequestAnimationFrame' ]; } if (!window.requestAnimationFrame) window.requestAnimationFrame=function(callback, element) { var currTime=new Date().getTime(); var timeToCall=Math.max(0, 16 - (currTime - lastTime)); var id=window.setTimeout(function() { callback(currTime + timeToCall); }, timeToCall); lastTime=currTime + timeToCall; return id; }; if (!window.cancelAnimationFrame) window.cancelAnimationFrame=function(id) { clearTimeout(id); }; }()); (function() { var startBtn=document.getElementById('button'); var requestID; var canvas=document.getElementById('canvas'); var ctx=canvas.getContext('2d'); var posX=0; var W=246; var H=60; var circles=[]; canvas.width=246; canvas.height=60; function animate() { requestID=requestAnimationFrame(animate); ctx.fillStyle='rgba(0,0,0,0.15)' ; ctx.fillRect(0, 0, W, H); for (var j=0; j < circles.length; j++) { var c=circles[j]; ctx.beginPath(); ctx.arc(c.x, c.y, c.radius, 0, Math.PI * 2, false); ctx.fillStyle='rgba(' + c.r + ', ' + c.g + ', ' + c.b + ', 0.5)' ; ctx.fill(); c.x +=c.vx; c.y +=c.vy; c.radius -=.02; if (c.radius < 0) circles[j]=new create(); } } function create() { this.x=W / 2; this.y=H / 2; this.radius=2 + Math.random() * 3; this.vx=-5 + Math.random() * 10; this.vy=-5 + Math.random() * 10; this.r=Math.round(Math.random()) * 255; this.g=Math.round(Math.random()) * 255; this.b=Math.round(Math.random()) * 255; } for (var i=0; i < 500; i++) { circles.push(new create()); } startBtn.addEventListener('mouseover', function(e) { e.preventDefault(); requestID=requestAnimationFrame(animate); }); startBtn.addEventListener('mouseout', function(e) { e.preventDefault(); cancelAnimationFrame(requestID); e.preventDefault(); posX=0; ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillRect(posX, 0, boxWidth, canvas.height); }); }());</script>
+                            </body>
+                        </html>

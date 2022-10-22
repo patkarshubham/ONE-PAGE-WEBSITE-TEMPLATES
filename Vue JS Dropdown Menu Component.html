@@ -1,0 +1,208 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - GoSNippets</title>
+                                <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+                                <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #f6f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px);
+}
+
+p {
+    margin: 0;
+}
+
+#app {
+    font-family: "Roboto", sans-serif;
+    width: 20em;
+    background: white;
+    height: 5em;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.language {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #8f9cb2;
+    width: 100%;
+    transition: 0.4s border ease;
+    background: white;
+    cursor: pointer;
+}
+
+.language-copy {
+    font-size: 14px;
+    color: #6f7887;
+    width: 100%;
+}
+
+.language .icon {
+    color: #8f9cb2;
+    transition: 0.5s transform ease;
+    transform-origin: 50%;
+}
+
+.language-drawer {
+    background: white;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 20px 40px 0 rgba(204, 204, 204, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.language-drawer .drawer-list,
+.language-drawer .drawer-list-item {
+    padding: 0;
+    margin: 0;
+}
+
+.language-drawer .drawer-list-item {
+    list-style-type: none;
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #606f87;
+}
+
+.language-drawer .drawer-list-item:first-child,
+.language-drawer .drawer-list-item:last-child {
+    margin: 0;
+}
+
+.language-drawer .drawer-list-item .drawer-list-name {
+    display: flex;
+    align-items: center;
+}
+
+.language-drawer .drawer-list-item .drawer-list-name input {
+    margin-right: 8px;
+}
+
+.language-drawer .drawer-list-item .drawer-list-value {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    background: #f4f5f7;
+    padding: 8px;
+    border-radius: 20px;
+    color: #858688;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.highlight {
+    border: 1px solid #889ded;
+}
+
+.highlight .language-copy,
+.highlight .icon {
+    color: #889ded;
+}
+
+.slide-enter {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: 0.5s all ease;
+}
+
+.slide-enter-to {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: 0.5s all ease;
+}
+
+.slide-leave-to {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: 0.5s all ease;
+}
+
+@media (max-width: 250px) {
+    .drawer-language-value {
+        opacity: 0;
+    }
+}</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div id="app">
+    <div class="language" :class="showDrawer ? 'highlight': '' " @click="show">
+        <p class="language-copy">Language</p>
+        <i class="icon fas fa-chevron-down" :style="{transform: showDrawer ? 'rotate(180deg)' : ''}"></i>
+    </div>
+    <transition name="slide">
+        <div class="language-drawer" v-if="showDrawer">
+            <ul class="drawer-list">
+                <li class="drawer-list-item" v-for="entry in langJSON" :key="entry">
+                    <div class="drawer-list-name">
+                        <input type="checkbox" v-model="entry.checked" :id="entry.language">
+                        <label :for="entry.language">{{ entry.language }}</label>
+                    </div>
+                    <p class="drawer-list-value">{{ entry.value }}</p>
+                </li>
+            </ul>
+        </div>
+    </transition>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+                            <script type='text/javascript'>new Vue({
+el: "#app",
+data: {
+langJSON: [
+{
+language: "English",
+value: 32,
+checked: false },
+
+{
+language: "German",
+value: 19,
+checked: false },
+
+{
+language: "Spanish",
+value: 20,
+checked: true },
+
+{
+language: "Mandarin",
+value: 7,
+checked: false }],
+
+
+showDrawer: true },
+
+methods: {
+show(e) {
+this.showDrawer = !this.showDrawer;
+} } });</script>
+                            </body>
+                        </html>

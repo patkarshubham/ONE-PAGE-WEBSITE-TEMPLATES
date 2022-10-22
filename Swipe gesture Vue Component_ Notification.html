@@ -1,0 +1,354 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - GoSNippets</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+                                <style>@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
+
+* {
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.card-wrapper:nth-child(1) {
+    background: #ffdfdf;
+    color: #5f6a9a;
+}
+
+.card-wrapper:nth-child(1) .card-thumbnail {
+    background: #5f6a9a;
+}
+
+.card-wrapper:nth-child(1) .card-thumbnail:after {
+    background: #bcc1d6;
+    opacity: 0.5;
+}
+
+.card-wrapper:nth-child(1) .card-thumbnail {
+    color: #ffdfdf;
+}
+
+.card-wrapper:nth-child(1) .menu:before,
+.card-wrapper:nth-child(1) .menu:after {
+    border: 1px solid #5f6a9a;
+}
+
+.card-wrapper:nth-child(2) {
+    background: #cfebed;
+    color: #6771a4;
+}
+
+.card-wrapper:nth-child(2) .card-thumbnail {
+    background: #6771a4;
+}
+
+.card-wrapper:nth-child(2) .card-thumbnail:after {
+    background: #c7cadd;
+    opacity: 0.5;
+}
+
+.card-wrapper:nth-child(2) .card-thumbnail {
+    color: #cfebed;
+}
+
+.card-wrapper:nth-child(2) .menu:before,
+.card-wrapper:nth-child(2) .menu:after {
+    border: 1px solid #6771a4;
+}
+
+.card-wrapper:nth-child(3) {
+    background: #ffeae3;
+    color: #756bc1;
+}
+
+.card-wrapper:nth-child(3) .card-thumbnail {
+    background: #756bc1;
+}
+
+.card-wrapper:nth-child(3) .card-thumbnail:after {
+    background: #dad7ee;
+    opacity: 0.5;
+}
+
+.card-wrapper:nth-child(3) .card-thumbnail {
+    color: #ffeae3;
+}
+
+.card-wrapper:nth-child(3) .menu:before,
+.card-wrapper:nth-child(3) .menu:after {
+    border: 1px solid #756bc1;
+}
+
+.card-wrapper:nth-child(4) {
+    background: #fef5da;
+    color: #666563;
+}
+
+.card-wrapper:nth-child(4) .card-thumbnail {
+    background: #666563;
+}
+
+.card-wrapper:nth-child(4) .card-thumbnail:after {
+    background: #b2b1b0;
+    opacity: 0.5;
+}
+
+.card-wrapper:nth-child(4) .card-thumbnail {
+    color: #fef5da;
+}
+
+.card-wrapper:nth-child(4) .menu:before,
+.card-wrapper:nth-child(4) .menu:after {
+    border: 1px solid #666563;
+}
+
+.cards {
+    position: relative;
+}
+
+.card-wrapper {
+    margin: 15px 0;
+    padding: 13px 10px 20px 20px;
+    width: 300px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.menu {
+    position: relative;
+}
+
+.menu:before,
+.menu:after {
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    position: absolute;
+    content: "";
+}
+
+.menu:before {
+    right: 11px;
+}
+
+.menu:after {
+    right: 2px;
+}
+
+.card-detail {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 20px 0;
+}
+
+.card-detail .card-thumbnail {
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    margin-right: 20px;
+    position: relative;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-copy .card-title {
+    font-weight: 700;
+    margin-bottom: 3px;
+    font-size: 18px;
+}
+
+.card-copy .card-description {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.card-time {
+    display: flex;
+    align-items: center;
+}
+
+.card-time .timestamp {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.card-time i {
+    margin: 0 5px;
+}
+
+.card-cta {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+
+.snackbar-wrapper {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    width: 300px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.snackbar {
+    background: #cfebed;
+    color: #6771a4;
+    padding: 10px;
+    transform: translateY(0px);
+    transition: 0.4s all ease;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+    transform: translateX(0px);
+}
+
+.slide-enter,
+.slide-leave-to {
+    transform: translateX(400px);
+    transition: 0.6s all ease;
+}
+
+@media (max-width: 500px) {
+    #app {
+        width: 100%;
+        margin: 20px;
+    }
+
+    .card-wrapper {
+        width: 100%;
+    }
+}
+
+.card-anim-enter-active {
+    transition: 0.4s all ease;
+    transform: translateX(0);
+}
+
+.card-anim-leave {
+    transform: translateX(0);
+}
+
+.card-anim-leave-active {
+    opacity: 0;
+    transform: translateX(230px);
+    position: absolute;
+    transition: 0.7s all ease;
+    transform-origin: center;
+}
+
+.card-anim-move {
+    transition: all 0.7s ease;
+}</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div id="app">
+    <task-card :tasks="tasks" @done="completeTask"></task-card>
+    <floating-message :removed="removed" @update="removed = $event"></floating-message>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+                            <script type='text/javascript'>let taskCard = Vue.component("task-card", {
+template: `<div class="cards">
+    <transition-group name="card-anim">
+        <div class="card-wrapper" v-for="(task, index) in tasks" :key="task" @click="toggleDone(index)">
+            <div class="menu"></div>
+            <div class="card-detail">
+                <div class="card-thumbnail">
+                    {{ task.title.split("")[0]}}
+                </div>
+                <div class="card-copy">
+                    <div class="card-title"> {{ task.title }} </div>
+                    <div class="card-description"> {{ task.description }} </div>
+                </div>
+            </div>
+            <div class="card-time">
+                <i class="far fa-clock"></i>
+                <div class="timestamp">
+                    {{ task.startTime }} - {{ task.endTime}}
+                </div>
+            </div>
+            <div class="card-cta"><i class="fa fa-chevron-right"></i></div>
+        </div>
+    </transition-group>
+</div>`,
+props: ["tasks"],
+methods: {
+toggleDone(index) {
+this.$emit("done", index);
+} } });
+
+
+let floatingMessage = Vue.component("floating-message", {
+template: `
+<div class="snackbar-wrapper" v-if="removed">
+    <transition-group name="slide">
+        <div class="snackbar" v-for="(item, index) in removed" v-bind:key="item"> {{ item }} is completed </div>
+    </transition-group>
+</div>
+`,
+props: ["removed"] });
+
+new Vue({
+el: "#app",
+data: {
+tasks: [
+{
+title: "Nintendo",
+description: "Onboarding",
+startTime: "09:00",
+endTime: "09:45" },
+
+{
+title: "Starbucks",
+description: "Marketing brief",
+startTime: "10:00",
+endTime: "10:30" },
+
+{
+title: "Toggl",
+description: "Sales",
+startTime: "11:00",
+endTime: "11:30" },
+
+{
+title: "Facebook",
+description: "Project",
+startTime: "14:00",
+endTime: "15:30" }],
+
+
+removed: [] },
+
+components: {
+taskCard: taskCard,
+floatingMessage: floatingMessage },
+
+methods: {
+completeTask(index) {
+this.removed.push(this.tasks.splice(index, 1)[0].title);
+this.$emit("update", this.removed);
+setTimeout(() => {
+this.removed.shift();
+}, 2000);
+} } });</script>
+                            </body>
+                        </html>

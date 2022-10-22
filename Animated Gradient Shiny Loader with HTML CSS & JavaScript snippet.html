@@ -1,0 +1,113 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - GoSNippets</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>html,
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+    background: #240f52;
+    overflow: hidden;
+}
+
+.outer {
+    height: 300px;
+    width: 300px;
+    background: linear-gradient(135deg, #FEED07 0%, #FE6A50 5%, #ED00AA 15%, #2FE3FE 50%, #8900FF 100%);
+    border-radius: 50%;
+}
+
+.inner {
+    position: absolute;
+    width: 275px;
+    height: 275px;
+    text-align: center;
+    line-height: 275px;
+    background: #240f52;
+    border-radius: 50%;
+    cursor: default;
+    /* opacity: 0; */
+}
+
+.inner span {
+    font-size: 60px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FEED07 0%, #FE6A50 5%, #ED00AA 15%, #2FE3FE 50%, #8900FF 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-size: 300%;
+}
+
+.outer.active-loader {
+    animation: rotate 2s ease infinite;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.outer.active-loader-2 {
+    animation: rotate2 3s ease;
+}
+
+@keyframes rotate2 {
+    to {
+        transform: rotate(360deg);
+    }
+}</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div class="outer"></div>
+<div class="inner">
+    <span>0%</span>
+</div>
+                            <script type='text/javascript'>let outer = document.querySelector(".outer");
+let inner = document.querySelector(".inner");
+let percent = document.querySelector("span");
+let count = 0;
+inner.addEventListener('click', function(){
+let loading = setInterval(function(){
+if(count == 100){
+outer.classList.remove("active-loader");
+outer.classList.add("active-loader-2");
+clearInterval();
+}else{
+count = count + 1;
+percent.textContent = count + '%';
+outer.classList.add("active-loader");
+}
+},200);
+});
+
+// This is Jquery Code you can use this code also instead of Javascript Code
+
+// $(document).ready(function(){
+// var count = 0;
+// $('.inner').click(function(){
+// setInterval(function(){
+// if(count == 100){
+// $('.outer').remove('active');
+// $('.outer').addClass('active2');
+// clearInterval();
+// }else{
+// count = count + 1;
+// $('span').text(count + '%');
+// $('.outer').addClass('active');
+// }
+// }, 200);
+// });
+// });</script>
+                            </body>
+                        </html>

@@ -1,0 +1,281 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - GoSNippets</title>
+                                <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
+* {
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background: #f6f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-wrapper {
+    width: 350px;
+    height: 600px;
+}
+
+.cta {
+    font-size: 12px;
+}
+
+.message-group {
+    margin: 20px 0;
+}
+
+.message-container {
+    display: grid;
+    grid-template: auto/30px 1fr 60px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    background: white;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    transition: transform 300ms ease-out;
+}
+
+.message-status {
+    width: 10px;
+    height: 10px;
+    align-self: flex-start;
+    margin: 5px;
+    margin-top: 15px;
+}
+
+.status {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.unread {
+    background: #6824d8;
+}
+
+.read {
+    background: white;
+    border: 1px solid #8c8c8c;
+}
+
+.message-details {
+    margin-top: 10px;
+}
+
+.message-copy {
+    margin-top: 0;
+    width: 200px;
+    color: #424242;
+    font-size: 14px;
+}
+
+.message-time {
+    font-size: 14px;
+    color: #8c8c8c;
+}
+
+.message-sender {
+    font-size: 13px;
+    color: #8c8c8c;
+}
+
+.message-copy,
+.message-sender {
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+.message-tags {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    background: #f9f6fd;
+    color: #6824d8;
+    padding: 5px 15px;
+    border-radius: 50px;
+    display: inline-flex;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.card-leave-active {
+    position: absolute;
+    transition: 0.4s all ease;
+}
+
+.card-move {
+    transition: 0.4s all ease;
+}
+
+@media (max-width: 600px) {
+    #app {
+        padding: 10px;
+    }
+
+    .message-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 300px) {
+    .app-title {
+        margin: 5px 0;
+        font-size: 17px;
+    }
+
+    .message-container {
+        grid-template: 30px 1fr 20px/100%;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .message-details {
+        margin: 20px 0;
+    }
+
+    .message-copy {
+        max-width: 100%;
+    }
+
+    .message-sender {
+        display: none;
+    }
+}</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div id="app">
+    <app-messages :messages="messagesThread"></app-messages>
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js'></script>
+                            <script type='text/javascript'>const messagesThread = [
+{
+copy: "Hello, This is some random person.",
+time: "2.30pm",
+sender: "Jane Smith",
+read: true,
+tags: ["request"] },
+
+{
+copy: "Someone read your email",
+time: "1.30pm",
+sender: "System Admin",
+read: false,
+tags: ["notification"] },
+
+{
+copy: "Meeting this Thursday at 4.30pm",
+time: "12.09pm",
+sender: "John Doe",
+read: false,
+tags: ["report"] }];
+
+
+
+Vue.directive("swipe", {
+bind(el, binding) {
+if (typeof binding.value === "function") {
+const hm = new Hammer(el);
+hm.on("swipe", binding.value);
+}
+} });
+
+
+const Messages = Vue.component("app-messages", {
+template: `
+<div class="message-wrapper">
+    <h2 class="app-title">Messages</h2>
+    <div class="cta"> {{ cta }} </div>
+    <transition-group name="card" tag="div" class="message-group">
+        <div class="message-container" v-for="(message, index) in messages" :key="message" v-swipe="clearMessage" :data-index="index" @click="clearMessage">
+            <div class="message-status">
+                <div class="status" :class="message.read ? 'read' : 'unread'"> </div>
+            </div>
+            <div class="message-details">
+                <p class="message-copy"> {{ message.copy }} </p>
+                <p class="message-sender"> {{ message.sender }} </p>
+                <ul class="message-tags">
+                    <li v-for="tag in message.tags"> {{ tag }} </li>
+                </ul>
+            </div>
+            <div class="message-time"> {{ message.time }} </div>
+        </div>
+    </transition-group>
+</div>
+`,
+props: ["messages"],
+computed: {
+cta: function () {
+return this.messages.length === 0 ?
+"No new messages" :
+"Swipe or tap to archive message";
+} },
+
+methods: {
+clearMessage(e) {
+const that = this;
+const currentElement = this.findEl(e.target);
+const index = currentElement.dataset["index"];
+
+TweenMax.fromTo(
+currentElement,
+0.4,
+{
+x: 0 },
+
+{
+x: 300,
+ease: Sine.easeOut,
+opacity: 0,
+onComplete: function () {
+that.messages.splice(index, 1);
+} });
+
+
+},
+checkClass(el) {
+return [...el.classList].includes("message-container");
+},
+findEl(currentElement) {
+while (
+this.checkClass(currentElement) === false &&
+currentElement.tagName !== "body")
+{
+currentElement = currentElement.parentElement;
+}
+return currentElement;
+} } });
+
+
+
+new Vue({
+el: "#app",
+data: {
+title: "Hello",
+messagesThread: messagesThread } });</script>
+                            </body>
+                        </html>

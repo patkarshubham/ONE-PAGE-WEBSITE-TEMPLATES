@@ -1,0 +1,530 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - GoSNippets</title>
+                                <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>____________________________________________________________*/
+
+/*____________________________________________________________
+# Auxiliary styles
+____________________________________________________________*/
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/*____________________________________________________________
+# Container
+____________________________________________________________*/
+.containers {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(45deg, #FBCA88, #EF69AD);
+}
+
+/*____________________________________________________________
+## Dark Button
+____________________________________________________________*/
+.darkButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    background-color: #f2f3f7;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.darkButton__indicator {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50px;
+    background-color: #facf6f;
+    transition: all 0.3s;
+}
+
+.darkButton.darkButton_dark {
+    background-color: #283245;
+}
+
+.darkButton.darkButton_dark .darkButton__indicator {
+    left: 26px;
+    background-color: #f2f3f7;
+}
+
+.containers.container_dark {
+    background: linear-gradient(45deg, #476892, #59355D);
+}
+
+.containers.container_dark .calculator {
+    background-color: #283245;
+}
+
+.containers.container_dark .calculator .inputWrap__result {
+    color: #f2f3f7;
+}
+
+.containers.container_dark .calculator .button {
+    background-color: #283245;
+    color: #f2f3f7;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.2), -6px -6px 10px -1px rgba(255, 255, 255, 0.05);
+}
+
+.containers.container_dark .calculator .button[action=clear] {
+    color: #a9aeb3;
+}
+
+.containers.container_dark .calculator .button[action=negate] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/negate_dark.png");
+}
+
+.containers.container_dark .calculator .button[action=percent] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/percent_dark.png");
+}
+
+.containers.container_dark .calculator .button:active {
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.05), -0.5px -0.5px 0 rgba(0, 0, 0, 0.1), 0.5px 0.5px 0 rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+}
+
+/*____________________________________________________________
+## Calculator
+____________________________________________________________*/
+.calculator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 545px;
+    height: 817px;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+    background-color: #f2f3f7;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    overflow: hidden;
+}
+
+/*____________________________________________________________
+### Output of Numbers
+____________________________________________________________*/
+.inputWrap {
+    position: absolute;
+    bottom: 683px;
+    width: 100%;
+}
+
+.inputWrap__result {
+    padding: 0 30.6px;
+    width: 100%;
+    height: 100px;
+    text-align: right;
+    font-family: sans-serif;
+    font-size: 90px;
+    color: #000;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+}
+
+/*____________________________________________________________
+### Buttons
+____________________________________________________________*/
+.buttonWrap {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 483.8px;
+}
+
+.buttonWrap__row {
+    width: 100%;
+}
+
+.button {
+    display: block;
+    float: left;
+    margin-left: 30.6px;
+    margin-bottom: 30.6px;
+    width: 98px;
+    height: 98px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 50px;
+    line-height: 1.9;
+    color: #000;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1), -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 30px;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    background-position: center;
+    background-color: #f2f3f7;
+    cursor: pointer;
+}
+
+.button._double {
+    padding-left: 35px;
+    width: 226.6px;
+    text-align: left;
+}
+
+.button[action=clear] {
+    color: #676d80;
+}
+
+.button[action=negate] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/negate.png");
+}
+
+.button[action=percent] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/percent.png");
+}
+
+.button[action=divide] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/divide.png");
+}
+
+.button[action=multiplication] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/multiplication.png");
+}
+
+.button[action=minus] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/minus.png");
+}
+
+.button[action=plus] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/plus.png");
+}
+
+.button[action=equality] {
+    background-image: url("https://rawcdn.githack.com/Kerthin/calculator-templateSait/dcdbbad6725e41b4e6ca2b55d40830cd1dfc92f6/app/image/equality.png");
+}
+
+.button:first-child {
+    margin-left: 0;
+}
+
+.button:active {
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2), inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7), -0.5px -0.5px 0 white, 0.5px 0.5px 0 rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.01);
+}
+
+/*____________________________________________________________
+# @media
+____________________________________________________________*/
+/*____________________________________________________________
+## @media 545px
+____________________________________________________________*/
+@media screen and (max-width: 545px) {
+    .calculator {
+        width: 414px;
+        height: 736px;
+        border-radius: 0;
+    }
+
+    .inputWrap {
+        bottom: 530px;
+    }
+
+    .inputWrap__result {
+        padding: 0 23.3px;
+        height: auto;
+        font-size: 68.5px;
+    }
+
+    .buttonWrap {
+        width: 368px;
+    }
+
+    .button {
+        margin-left: 23.3px;
+        margin-bottom: 23.3px;
+        width: 74.5px;
+        height: 74.5px;
+        font-size: 38px;
+        border-radius: 22.8px;
+    }
+
+    .button._double {
+        padding-left: 24px;
+        width: 172.3px;
+    }
+}
+
+/*____________________________________________________________
+## @media 375px
+____________________________________________________________*/
+@media screen and (max-width: 375px) {
+    .calculator {
+        width: 100%;
+        height: 667px;
+    }
+
+    .inputWrap {
+        bottom: 470px;
+    }
+
+    .inputWrap__result {
+        padding: 0 20.6px;
+        font-size: 62px;
+    }
+
+    .buttonWrap {
+        width: 333.8px;
+    }
+
+    .button {
+        margin-left: 20.6px;
+        margin-bottom: 20.6px;
+        width: 68px;
+        height: 68px;
+        font-size: 35px;
+        border-radius: 20px;
+    }
+
+    .button._double {
+        padding-left: 24px;
+        width: 156.6px;
+    }
+}
+
+/*____________________________________________________________
+## @media 320px
+____________________________________________________________*/
+@media screen and (max-width: 320px) {
+    .calculator {
+        height: 568px;
+    }
+
+    .inputWrap {
+        bottom: 400px;
+    }
+
+    .inputWrap__result {
+        padding: 0 17.6px;
+        height: auto;
+        font-size: 53px;
+    }
+
+    .buttonWrap {
+        width: 284.8px;
+    }
+
+    .button {
+        margin-left: 17.6px;
+        margin-bottom: 17.6px;
+        width: 58px;
+        height: 58px;
+        font-size: 30px;
+        border-radius: 17px;
+    }
+
+    .button._double {
+        padding-left: 20.5px;
+        width: 133.6px;
+    }
+}
+
+/*____________________________________________________________
+## @media Height 850px
+____________________________________________________________*/
+@media screen and (min-width: 545px) and (max-height: 850px) {
+    .calculator {
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+}
+
+/*____________________________________________________________
+## @media Height 680px
+____________________________________________________________*/
+@media screen and (min-width: 545px) and (max-height: 680px) {
+    .calculator {
+        transform: translate(-50%, -50%) scale(0.6);
+    }
+}
+
+/*____________________________________________________________
+## @media Height 540px
+____________________________________________________________*/
+@media screen and (min-width: 545px) and (max-height: 540px) {
+    .calculator {
+        transform: translate(-50%, -50%) scale(0.4);
+    }
+}
+
+/*____________________________________________________________
+# Social links
+____________________________________________________________*/
+.social {
+    position: fixed;
+    bottom: 0;
+    left: 30px;
+}
+
+.socialList {
+    list-style: none;
+}
+
+.socialList:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 1px;
+    height: 40px;
+    background: #f7e0b5;
+}
+
+.socialList__item {
+    margin-bottom: 10px;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s;
+}
+
+.socialList__item:hover {
+    transform: translateY(-3px);
+}
+
+.socialList__item:hover .socialList__icon {
+    stroke: #7dcbd8;
+}
+
+.socialList__icon {
+    fill: none;
+    stroke: #f7e0b5;
+}</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div class="containers">
+    <div class="darkButton">
+        <div class="darkButton__indicator"></div>
+    </div>
+    <div class="calculator">
+        <div class="inputWrap">
+            <input class="inputWrap__result" type="text" readonly="readonly" />
+        </div>
+        <div class="buttonWrap">
+            <div class="buttonWrap__row clearfix">
+                <div class="button _action" action="clear">AC</div>
+                <div class="button _action" action="negate"></div>
+                <div class="button _action" action="percent"></div>
+                <div class="button _action" action="divide"></div>
+            </div>
+            <div class="buttonWrap__row clearfix">
+                <div class="button _number" action="">7</div>
+                <div class="button _number" action="">8</div>
+                <div class="button _number" action="">9</div>
+                <div class="button _action" action="multiplication"></div>
+            </div>
+            <div class="buttonWrap__row clearfix">
+                <div class="button _number" action="">4</div>
+                <div class="button _number" action="">5</div>
+                <div class="button _number" action="">6</div>
+                <div class="button _action" action="minus"></div>
+            </div>
+            <div class="buttonWrap__row clearfix">
+                <div class="button _number" action="">1</div>
+                <div class="button _number" action="">2</div>
+                <div class="button _number" action="">3</div>
+                <div class="button _action" action="plus"></div>
+            </div>
+            <div class="buttonWrap__row clearfix">
+                <div class="button _number _double" action="">0</div>
+                <div class="button _action" action="point">.</div>
+                <div class="button _action" action="equality"></div>
+            </div>
+        </div>
+    </div>
+</div>
+                            <script type='text/javascript'>// Dark Theme
+var container = document.querySelector('.containers');
+var themeButton = document.querySelector('.darkButton');
+
+themeButton.onclick = function (event) {
+this.classList.toggle("darkButton_dark");
+container.classList.toggle("container_dark");
+};
+
+// Calculator
+var result = document.querySelector("input.inputWrap__result");
+var number = document.querySelectorAll("._number");
+var equality = document.querySelector("._action[action=equality]");
+var clear = document.querySelector("._action[action=clear]");
+var negate = document.querySelector("._action[action=negate]");
+var point = document.querySelector("._action[action=point]");
+
+number.forEach(function (elem) {
+var n = elem.innerText;
+elem.onclick = function (event) {return result.value = result.value + n;};
+});
+
+var buffer = [];
+
+var evaluate = function (buffer) {
+var secondArgument = buffer.pop().value;
+var operator = buffer.pop().value;
+var firstArgument = buffer.pop().value;
+
+if (operator === "plus") {
+return firstArgument + secondArgument;
+} else
+if (operator === "minus") {
+return firstArgument - secondArgument;
+} else
+if (operator === "multiplication") {
+return firstArgument * secondArgument;
+} else
+if (operator === "divide") {
+return firstArgument / secondArgument;
+} else
+if (operator === "percent") {
+return firstArgument % secondArgument;
+}
+};
+
+var opCallback = function (actionName) {
+return function (event) {
+if (buffer && buffer.length) {
+buffer.push({ type: "value", value: parseFloat(result_1.value, 10) });
+
+var result_1 = evaluate(buffer);
+buffer.push({ type: "value", value: result_1 });
+buffer.push({ type: "action", value: actionName });
+result_1.value = "";
+} else
+{
+buffer.push({ type: "value", value: parseFloat(result.value, 10) });
+buffer.push({ type: "action", value: actionName });
+result.value = "";
+}
+};
+};
+
+for (var i = 0, mathAction = ["plus", "minus", "multiplication", "divide", "percent"]; i < mathAction.length; i++) { var actionName=mathAction[i]; mathOperator=document.querySelector("._action[action=" + actionName + " ]"); mathOperator.onclick=opCallback(actionName); } equality.onclick=function (event) { buffer.push({ type: "value" , value: parseFloat(result.value, 10) }); result.value=evaluate(buffer).toString(); }; clear.onclick=function (event) { result.value="" ; while (buffer.length) { buffer.pop();} }; negate.onclick=function (event) { return result.value=-parseFloat(result.value, 10); }; point.onclick=function (event) { return result.value=parseFloat(result.value) + '.' ; };</script>
+                            </body>
+                        </html>

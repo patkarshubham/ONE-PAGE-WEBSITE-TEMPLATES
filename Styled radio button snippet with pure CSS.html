@@ -1,0 +1,110 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - GoSNippets</title>
+                                <link href='' rel='stylesheet'>
+                                <link href='' rel='stylesheet'>
+                                <style>:root {
+    --width: 10em;
+    --height: 10em;
+    --border: 15px;
+    --circle-diameter: calc(var(--width)/2);
+}
+
+:root body {
+    font-size: 16px;
+    padding-top: 150px;
+}
+
+.switch-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: min-content;
+    margin: 20px auto;
+    border-radius: 25%/50%;
+    box-shadow: 0px 2px 3px 1px #333;
+}
+
+.switch-container .switch {
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: var(--width);
+    height: var(--height);
+    margin: 0;
+    cursor: pointer;
+}
+
+.switch-container .switch:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: var(--border) solid #009294;
+    box-sizing: border-box;
+    background: linear-gradient(aquamarine, darkturquoise);
+}
+
+.switch-container .switch--left:before {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-right: 0;
+}
+
+.switch-container .switch--right:before {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-left: 0;
+}
+
+.switch-container .switch--left~span {
+    left: calc(0px + var(--border));
+    width: calc(var(--circle-diameter) + (var(--border)));
+    height: calc(var(--circle-diameter) + (var(--border)));
+}
+
+.switch-container .switch--left:checked~span {
+    display: block;
+    position: absolute;
+    left: calc(0px + var(--border));
+    border-radius: 50%;
+    background-color: darkturquoise;
+    box-sizing: content-box;
+    box-shadow: inset 0 0 10px 5px #00b0b3, 1px 0px 5px 1px #666;
+    z-index: 2;
+    transition: all 0.3s;
+}
+
+.switch-container .switch--right:checked~span {
+    display: block;
+    position: absolute;
+    left: calc(100% - var(--circle-diameter) - (var(--border)*2));
+    border-radius: 50%;
+    background-color: darkturquoise;
+    box-sizing: content-box;
+    box-shadow: inset 0 0 10px 5px #00b0b3, -1px 0px 5px 1px #666;
+    z-index: 2;
+    transition: all 0.3s ease-in-out;
+}</style>
+                                <script type='text/javascript' src=''></script>
+                                <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+                                <script type='text/javascript' src=''></script>
+                            </head>
+                            <body oncontextmenu='return false' class='snippet-body'>
+                            <div class="switch-container">
+    <input class="switch switch--left" type="radio" name="theme" value="dark" checked>
+    <input class="switch switch--right" type="radio" name="theme" value="light">
+    <span class="status"></span>
+</div>
+                            <script type='text/javascript'></script>
+                            </body>
+                        </html>
